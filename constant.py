@@ -14,7 +14,8 @@ def prepare_example_caption(text: str, index: int = 0) -> str:
 
 create = "Create 🤖"
 create_image = "🖍The picture is being drawn..."
-create_description = "Please describe the picture in your imagination using words. \n\n🖋<i>Enter text...</i>"
+create_description = "Please answer the following questions to describe your structure. \n\n🖋<i>Complete the " \
+                     "poll ...</i>"
 example = "Example 🏞"
 cancel = "🔙 Cancel"
 about_us = "About us 👁️"
