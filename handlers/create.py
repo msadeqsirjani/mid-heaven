@@ -108,9 +108,7 @@ async def echo_bot(message: types.Message, state: FSMContext):
 
     chat_id = message.from_user.id
     user_data = await state.get_data()
-
-    print(user_data)
-
+    
     original_prompt = generate(user_data)
     prompt = f"mdjrny-v4 style {original_prompt.lower().strip()}"
 
