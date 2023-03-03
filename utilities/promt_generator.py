@@ -1,4 +1,4 @@
 def generate(data) -> str:
-    prompts = [f"{key}: {value}" for value, key in data.items()]
+    prompts = [f"{value}" for key, value in data.items()]
 
-    return ", ".join(prompts)
+    return ",".join(prompts)
