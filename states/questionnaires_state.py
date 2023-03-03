@@ -12,3 +12,4 @@ class QuestionnairesState(StatesGroup):
     details = State()
     overhang = State()
     style_advanced = State()
+    num_of_outputs = State()
