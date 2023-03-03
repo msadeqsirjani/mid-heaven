@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from loader import dispatcher, bot
-from constant import create, create_image, create_description, errors, block, prepare_example_caption
+from constant import create, create_image, create_description, errors, block, prepare_example_caption, cancel
 from states.create_image_state import CreateImageState
 from states.questionnaires_state import QuestionnairesState
 from keyboards.replay_markup_button import make_button
@@ -103,25 +103,28 @@ async def answer_number_of_storey(message: types.Message, state: FSMContext):
 
 @dispatcher.message_handler(state=QuestionnairesState.style_advanced)
 async def echo_bot(message: types.Message, state: FSMContext):
-    await state.update_data(garage=f"Style (advanced): {message.text}")
+    await state.update_data(style_advanced=f"Style (advanced): {message.text}")
     await CreateImageState.create_image.set()
 
     chat_id = message.from_user.id
     user_data = await state.get_data()
-    
+
     original_prompt = generate(user_data)
     prompt = f"mdjrny-v4 style {original_prompt.lower().strip()}"
 
-    await message.answer(create_image)
+    await message.answer(text=create_image,
+                         reply_markup=make_button(words=[cancel], row_width=2))
 
-    photo = draw_picture(prompt=prompt)[0]
+    photos = draw_picture(prompt=prompt, num_outputs=4)
 
-    if photo:
-        await bot.send_photo(chat_id=chat_id,
-                             photo=photo,
-                             caption=prepare_example_caption(original_prompt),
-                             reply_markup=make_button(words=[create], row_width=2))
+    if photos:
+        for photo in photos:
+            await bot.send_photo(chat_id=chat_id,
+                                 photo=photo,
+                                 caption=prepare_example_caption(original_prompt),
+                                 reply_markup=make_button(words=[create], row_width=2))
         await state.finish()
     else:
-        await message.answer(text=errors)
+        await message.answer(text=errors,
+                             reply_markup=make_button(words=[create], row_width=2))
     await state.finish()
