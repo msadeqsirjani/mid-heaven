@@ -7,9 +7,9 @@ def prepare_example_caption(text: str, index: int = 0) -> str:
     if index != 0:
         return f'{index} - example \n\n' \
                f"Description: <b>{text}</b>\n\n" \
-               "👉@midheavon_bot"
+               "👉 @midheaven_bot"
     else:
-        return f"\n\nDescription: <b>{text}</b>\n\n👉@midheavon_bot"
+        return f"\n\nDescription: <b>{text}</b>\n\n👉 @midheaven_bot"
 
 
 create = "Create 🤖"
