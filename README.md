@@ -1,7 +1,5 @@
 # Mid-Heaven | Telegram Text-to-Image Bot
 
-![Telegram Text-to-Image Bot](https://your-image-url.com/telegram-bot-image.png)
-
 ## Overview
 
 This project is a Telegram bot that converts text messages into images using the state-of-the-art mid-journey model. The bot receives text input from users and generates images based on the provided text, making it a fun and creative tool for expressing messages visually.
