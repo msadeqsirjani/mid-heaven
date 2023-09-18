@@ -7,14 +7,16 @@ def prepare_example_caption(text: str, index: int = 0) -> str:
     if index != 0:
         return f'{index} - example \n\n' \
                f"Description: <b>{text}</b>\n\n" \
-               "👉@midheavon_bot"
+               "👉 @midheaven_bot"
     else:
-        return f"\n\nDescription: <b>{text}</b>\n\n👉@midheavon_bot"
+        return f"\n\nDescription: <b>{text}</b>\n\n👉 @midheaven_bot"
 
 
 create = "Create 🤖"
 create_image = "🖍The picture is being drawn..."
-create_description = "Please describe the picture in your imagination using words. \n\n🖋<i>Enter text...</i>"
+create_description = "Please answer the following questions to describe your structure. \n\n🖋<i>Complete the " \
+                     "poll ...</i>"
+create_successful = "Generating photos is successfully completed"
 example = "Example 🏞"
 cancel = "🔙 Cancel"
 about_us = "About us 👁️"
